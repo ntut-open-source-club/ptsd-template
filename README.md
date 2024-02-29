@@ -1,23 +1,24 @@
-# Giraffe Adventure
-## Description
-This is a [PTSD](https://github.com/ntut-open-source-club/practical-tools-for-simple-design) framework practice for students taking OOPL2024F.
+# PTSD Template
 
-## Installation
-1. Clone the repository
-```bash
-git clone https://github.com/ntut-open-source-club/PTSD-Practice-Giraffe-Adventure --recursive
-```
-### Post configuration (Optional)
-* Modify [config.hpp](PTSD/include/config.hpp) to set the width and height to 601.
-* Modify [config.hpp](PTSD/include/config.hpp) to set the frame rate, which is also the game update rate, to desired value(default is 60).
-* Modify [config.hpp](PTSD/include/config.hpp) to set the game name with desired name.
+This is a [PTSD](https://github.com/ntut-open-source-club/practical-tools-for-simple-design) framework template for students taking OOPL2024s.
 
-## Tasks
-- [ ] Replace the image of m_giraffe with giraffe.png in Resources!,
-- [ ] Make the giraffe move into the red area using the keyboard!
-- [ ] Make the chest disappear when the giraffe touches it!
-- [ ] Write a program to give your bee friend an animation!
-- [ ] Write a program to open the door when your character touches it!
-- [ ] Design a program to countdown, stop animation after OK display
+## Quick Start
 
-Hint:  Look for `TODO`s if you are lost.
+1. Use this template to create a new repository
+   ![github screenshot](https://github.com/ntut-rick/ptsd-template/assets/126899559/ef62242f-03ed-481d-b858-12b730c09beb)
+
+2. Clone your repository
+
+   ```bash
+   git clone YOUR_GIT_URL --recursive
+   ```
+
+3. Build your project
+
+  > [!NOTE]
+  > in `Debug` to avoid anonying path problem.
+   
+   ```sh
+   cmake -DCMAKE_BUILD_TYPE=Debug -B build # -G Ninja
+   ```
+   better read [PTSD README](https://github.com/ntut-open-source-club/practical-tools-for-simple-design)
