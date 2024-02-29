@@ -15,8 +15,8 @@ void App::Start() {
     m_Giraffe->SetZIndex(5);
     m_Giraffe->Start();
 
-    m_Root.AddChild(m_Giraffe);
-    m_Root.AddChild(m_Cat);
+    m_Renderer.AddChild(m_Giraffe);
+    m_Renderer.AddChild(m_Cat);
 
     m_CurrentState = State::UPDATE;
 }
@@ -58,7 +58,7 @@ void App::Update() {
     m_Giraffe->Update();
     m_Cat->Update();
 
-    m_Root.Update();
+    m_Renderer.Update();
 }
 
 void App::End() { // NOLINT(this method will mutate members in the future)
