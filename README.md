@@ -15,8 +15,8 @@ This is a [PTSD](https://github.com/ntut-open-source-club/practical-tools-for-si
 
 3. Build your project
 
-  > [!NOTE]
-  > in `Debug` to avoid anonying path problem.
+  > [!WARNING]
+  > Please build your project in `Debug` because our `Release` path is broken D:
    
    ```sh
    cmake -DCMAKE_BUILD_TYPE=Debug -B build # -G Ninja
