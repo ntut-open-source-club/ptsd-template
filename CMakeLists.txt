@@ -4,7 +4,7 @@ project(REPLACE_WITH_YOUR_PROJECT_NAME)
 set(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(PTSD)
-add_library(Framework ${PTSD_SRC_FILES} $<TARGET_OBJECTS:PracticalToolsForSimpleDesign>)
+add_library(Framework ${PTSD_SRC_FILES} $<TARGET_OBJECTS:PTSD>)
 
 include(files.cmake)
 set(SRC_DIR ${CMAKE_SOURCE_DIR}/src)
@@ -28,12 +28,25 @@ else()
 endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    target_compile_definitions(${PROJECT_NAME} PRIVATE RESOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/Resources")
+    set(RESOURCES_DIR "${CMAKE_SOURCE_DIR}/Resources" CACHE STRING "Resources directory")
+elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
+    add_custom_target(CopyResources
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/Resources
+        ${CMAKE_BINARY_DIR}/Resources
+    )
+    add_dependencies(${PROJECT_NAME} CopyResources)
+    set(RESOURCES_DIR "./Resources")
 else()
-    message(FATAL_ERROR "relative RESOURCE_DIR is WIP, Please use `-DCMAKE_BUILD_TYPE=Debug` build for now.")
-    # target_compile_definitions(${PROJECT_NAME} PRIVATE RESOURCE_DIR="${CMAKE_INSTALL_PREFIX}/Resources")
+    message(AUTHOR_WARNING
+        "Unknown build type: ${CMAKE_BUILD_TYPE}. Please ensure that You have passed RESOURCES_DIR to CMake.")
 endif()
 
+message(STATUS "Resources directory: ${RESOURCES_DIR}")
+message(STATUS "PTSD Assets directory: ${PTSD_ASSETS_DIR}")
+
+target_compile_definitions(${PROJECT_NAME} PRIVATE RESOURCES_DIR="${RESOURCES_DIR}")
+target_compile_definitions(${PROJECT_NAME} PRIVATE PTSD_ASSETS_DIR=" ${PTSD_ASSETS_DIR}")
 target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${DEPENDENCY_INCLUDE_DIRS})
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/PTSD/include)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
