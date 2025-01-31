@@ -4,7 +4,6 @@ project(REPLACE_WITH_YOUR_PROJECT_NAME)
 set(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(PTSD)
-add_library(Framework ${PTSD_SRC_FILES} $<TARGET_OBJECTS:PracticalToolsForSimpleDesign>)
 
 include(files.cmake)
 set(SRC_DIR ${CMAKE_SOURCE_DIR}/src)
@@ -38,11 +37,7 @@ target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ${DEPENDENCY_INCLUDE_D
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/PTSD/include)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-target_link_libraries(Framework
-    ${DEPENDENCY_LINK_LIBRARIES}
-)
-
 target_link_libraries(${PROJECT_NAME}
     SDL2::SDL2main
-    Framework
+    PTSD
 )
