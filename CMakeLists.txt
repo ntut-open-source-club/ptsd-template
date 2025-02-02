@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 cmake_policy(SET CMP0135 NEW)
 
 include(FetchContent)
-set(FETCH_CONTENT_QUIET FALSE)
+set(FETCHCONTENT_QUIET FALSE)
 
 FetchContent_Declare(
     ptsd
