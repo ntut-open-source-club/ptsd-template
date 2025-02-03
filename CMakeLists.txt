@@ -13,7 +13,7 @@ FetchContent_Declare(
 
     URL         https://github.com/ntut-open-source-club/practical-tools-for-simple-design/archive/refs/tags/v0.2.zip
 
-    # Or alternatively if you want to use a specfic git commit instead of a release:
+    # Or alternatively if you want to use a specific git commit instead of a release:
     # GIT_REPOSITORY  https://github.com/ntut-open-source-club/practical-tools-for-simple-design.git
     # GIT_TAG         <git_tag>
 
