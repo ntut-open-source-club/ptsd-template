@@ -22,3 +22,14 @@ This is a [PTSD](https://github.com/ntut-open-source-club/practical-tools-for-si
    cmake -DCMAKE_BUILD_TYPE=Debug -B build # -G Ninja
    ```
    better read [PTSD README](https://github.com/ntut-open-source-club/practical-tools-for-simple-design)
+
+## File Tour
+
+```
+├── CMakeLists.txt -- Typically not modified, except for changes PTSD
+├── files.cmake    -- Include all file you want to compile
+├── Resources      -- See AssetStore
+└── src
+    ├── App.cpp    -- START HERE (Recommended)
+    └── main.cpp   -- Handles core framework things
+```
